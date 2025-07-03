@@ -1,0 +1,17 @@
+CREATE TABLE pets (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    especie VARCHAR(20), 
+    raca VARCHAR(100),
+    idade INTEGER CHECK (idade >= 0),
+    sexo CHAR(1) CHECK (sexo IN ('M', 'F')),
+    cor VARCHAR(50)
+);
+
+SELECT * FROM pets
+
+INSERT INTO pets (nome, especie, raca, idade, sexo, cor) VALUES 
+('Rex', 'Cachorro', 'Labrador', 3, 'M', 'Amarelo'),
+('Mimi', 'Gato', 'Persa', 2, 'F', 'Branco'),
+('Thor', 'Cachorro', 'Pastor Alemão', 5, 'M', 'Preto e marrom'),
+('Luna', 'Gato', 'Siamês', 1, 'F', 'Cinza');
