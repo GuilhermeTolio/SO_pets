@@ -8,7 +8,25 @@ CREATE TABLE pets (
     cor VARCHAR(50)
 );
 
+CREATE TABLE usuario (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(255),
+    telefone VARCHAR(11)  
+);
+
+CREATE TABLE doacao(
+    id SERIAL PRIMARY KEY,
+    tipo VARCHAR(100) NOT NULL,
+    valor DOUBLE(10,2),
+    descricao TEXT
+);
+
 SELECT * FROM pets
+
+SELECT * FROM usuario
+
+SELECT * FROM doacao
 
 INSERT INTO pets (nome, especie, raca, idade, sexo, cor) VALUES 
 ('Rex', 'Cachorro', 'Labrador', 3, 'M', 'Amarelo'),
