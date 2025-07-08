@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1 class="card-title">🐕 Detalhes do Pet</h1>
+            <h1 class="card-title">Detalhes do Pet</h1>
             <div>
                 <a href="index.php?controller=pet&action=index" class="btn btn-secondary">⬅️ Voltar à Lista</a>
                 <a href="index.php?controller=pet&action=edit&id=<?= $this->pet->id ?>" class="btn btn-warning">✏️ Editar</a>
@@ -13,7 +13,7 @@
         
         <div class="grid" style="grid-template-columns: 1fr 1fr;">
             <div>
-                <h3>📝 Informações Básicas</h3>
+                <h3>Informações Básicas</h3>
                 <table class="table">
                     <tr>
                         <td><strong>ID:</strong></td>
@@ -27,14 +27,6 @@
                         <td><strong>Espécie:</strong></td>
                         <td>
                             <?php
-                            $especies = [
-                                'Cão' => '🐕',
-                                'Gato' => '🐱',
-                                'Coelho' => '🐰',
-                                'Pássaro' => '🐦',
-                                'Outro' => '🐾'
-                            ];
-                            echo isset($especies[$this->pet->especie]) ? $especies[$this->pet->especie] . ' ' : '';
                             echo htmlspecialchars($this->pet->especie);
                             ?>
                         </td>
@@ -47,7 +39,7 @@
             </div>
             
             <div>
-                <h3>🔍 Características</h3>
+                <h3>Características</h3>
                 <table class="table">
                     <tr>
                         <td><strong>Idade:</strong></td>
@@ -74,7 +66,7 @@
         </div>
         
         <div class="card" style="margin-top: 2rem; background-color: #f8f9fa;">
-            <h3>🎯 Ações Disponíveis</h3>
+            <h3>Ações Disponíveis</h3>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                 <a href="index.php?controller=pet&action=edit&id=<?= $this->pet->id ?>" 
                    class="btn btn-warning">✏️ Editar Informações</a>

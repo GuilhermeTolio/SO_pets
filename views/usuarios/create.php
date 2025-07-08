@@ -70,7 +70,7 @@
             
             <div class="form-group">
                 <button type="submit" class="btn btn-success">💾 Cadastrar Usuário</button>
-                <a href="index.php?controller=usuario&action=index" class="btn btn-secondary">❌ Cancelar</a>
+                <a href="index.php?controller=usuario&action=index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>

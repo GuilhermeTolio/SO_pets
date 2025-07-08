@@ -12,19 +12,17 @@ class Usuario {
         $this->conn = $db;
     }
 
-    // Criar usuário
     public function create() {
         $query = "INSERT INTO " . $this->table_name . " 
-                  SET nome=:nome, email=:email, telefone=:telefone";
+                  (nome, email, telefone) 
+                  VALUES (:nome, :email, :telefone)";
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar dados
         $this->nome = htmlspecialchars(strip_tags($this->nome));
         $this->email = htmlspecialchars(strip_tags($this->email));
         $this->telefone = htmlspecialchars(strip_tags($this->telefone));
 
-        // Bind dos parâmetros
         $stmt->bindParam(":nome", $this->nome);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":telefone", $this->telefone);
@@ -36,7 +34,6 @@ class Usuario {
         return false;
     }
 
-    // Ler todos os usuários
     public function read() {
         $query = "SELECT id, nome, email, telefone 
                   FROM " . $this->table_name . " 
@@ -48,11 +45,10 @@ class Usuario {
         return $stmt;
     }
 
-    // Ler um usuário específico
     public function readOne() {
         $query = "SELECT id, nome, email, telefone 
                   FROM " . $this->table_name . " 
-                  WHERE id = ? LIMIT 0,1";
+                  WHERE id = ? LIMIT 1";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
@@ -70,7 +66,6 @@ class Usuario {
         return false;
     }
 
-    // Atualizar usuário
     public function update() {
         $query = "UPDATE " . $this->table_name . " 
                   SET nome = :nome, email = :email, telefone = :telefone 
@@ -95,7 +90,6 @@ class Usuario {
         return false;
     }
 
-    // Deletar usuário
     public function delete() {
         $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
 

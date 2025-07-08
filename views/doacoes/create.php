@@ -13,7 +13,7 @@
                 <label for="tipo" class="form-label">Tipo de Doação <span class="required">*</span></label>
                 <select id="tipo" name="tipo" class="form-control" required>
                     <option value="">Selecione o tipo de doação</option>
-                    <option value="Dinheiro">💰 Dinheiro</option>
+                    <option value="Dinheiro">Dinheiro</option>
                     <option value="Ração">🥘 Ração</option>
                     <option value="Medicamento">💊 Medicamento</option>
                     <option value="Brinquedo">🧸 Brinquedo</option>
@@ -39,7 +39,7 @@
             </div>
             
             <div class="card" style="background-color: #f8f9fa; margin: 1rem 0;">
-                <h4>💡 Dicas para o Preenchimento</h4>
+                <h4>Dicas para o Preenchimento</h4>
                 <ul style="margin-left: 1.5rem;">
                     <li><strong>Dinheiro:</strong> Informe o valor exato</li>
                     <li><strong>Ração:</strong> Especifique marca, sabor e quantidade (kg)</li>
@@ -50,14 +50,13 @@
             
             <div class="form-group">
                 <button type="submit" class="btn btn-success">💾 Registrar Doação</button>
-                <a href="index.php?controller=doacao&action=index" class="btn btn-secondary">❌ Cancelar</a>
+                <a href="index.php?controller=doacao&action=index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
 <script>
-    // Mostrar/ocultar campo de valor baseado no tipo
     document.getElementById('tipo').addEventListener('change', function() {
         const valorGroup = document.getElementById('valor').parentElement;
         const tiposComValor = ['Dinheiro', 'Transporte'];

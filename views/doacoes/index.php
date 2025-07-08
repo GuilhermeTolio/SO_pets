@@ -4,19 +4,15 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1 class="card-title">💝 Gerenciar Doações</h1>
+            <h1 class="card-title">Gerenciar Doações</h1>
             <a href="index.php?controller=doacao&action=create" class="btn btn-success">➕ Registrar Nova Doação</a>
         </div>
         
         <div class="form-group">
-            <input type="text" id="filtro-doacoes" class="form-control" placeholder="🔍 Filtrar doações...">
+            <input type="text" id="filtro-doacoes" class="form-control" placeholder="Filtrar doações...">
         </div>
         
-        <?php if(empty($doacoes)): ?>
-            <div class="alert alert-info">
-                Nenhuma doação registrada ainda. <a href="index.php?controller=doacao&action=create">Registre a primeira doação</a>!
-            </div>
-        <?php else: ?>
+        <?php if(!empty($doacoes)): ?>
             <table class="table" id="tabela-doacoes">
                 <thead>
                     <tr>
@@ -33,23 +29,7 @@
                             <td><?= htmlspecialchars($doacao['id']) ?></td>
                             <td>
                                 <?php
-                                $tipos = [
-                                    'Dinheiro' => '💰',
-                                    'Ração' => '🥘',
-                                    'Medicamento' => '💊',
-                                    'Brinquedo' => '🧸',
-                                    'Roupa' => '👕',
-                                    'Cama' => '🛏️',
-                                    'Outro' => '📦'
-                                ];
-                                $icone = '';
-                                foreach($tipos as $tipo => $emoji) {
-                                    if(stripos($doacao['tipo'], $tipo) !== false) {
-                                        $icone = $emoji . ' ';
-                                        break;
-                                    }
-                                }
-                                echo $icone . htmlspecialchars($doacao['tipo']);
+                                echo htmlspecialchars($doacao['tipo']);
                                 ?>
                             </td>
                             <td>
@@ -75,7 +55,7 @@
             </table>
             
             <div class="card" style="margin-top: 2rem; background-color: #f8f9fa;">
-                <h3>📊 Resumo das Doações</h3>
+                <h3>Resumo das Doações</h3>
                 <div class="grid">
                     <div>
                         <strong>Total de Doações:</strong> <?= count($doacoes) ?>

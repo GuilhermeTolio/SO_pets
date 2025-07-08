@@ -13,7 +13,7 @@
         
         <div class="grid" style="grid-template-columns: 1fr 1fr;">
             <div>
-                <h3>📝 Informações da Doação</h3>
+                <h3>Informações da Doação</h3>
                 <table class="table">
                     <tr>
                         <td><strong>ID:</strong></td>
@@ -23,25 +23,7 @@
                         <td><strong>Tipo:</strong></td>
                         <td>
                             <?php
-                            $tipos = [
-                                'Dinheiro' => '💰',
-                                'Ração' => '🥘',
-                                'Medicamento' => '💊',
-                                'Brinquedo' => '🧸',
-                                'Roupa' => '👕',
-                                'Cama' => '🛏️',
-                                'Material' => '🧽',
-                                'Transporte' => '🚗',
-                                'Outro' => '📦'
-                            ];
-                            $icone = '📦';
-                            foreach($tipos as $tipo => $emoji) {
-                                if(stripos($this->doacao->tipo, $tipo) !== false) {
-                                    $icone = $emoji;
-                                    break;
-                                }
-                            }
-                            echo $icone . ' ' . htmlspecialchars($this->doacao->tipo);
+                            echo htmlspecialchars($this->doacao->tipo);
                             ?>
                         </td>
                     </tr>
@@ -61,14 +43,14 @@
             </div>
             
             <div>
-                <h3>📊 Status da Doação</h3>
+                <h3>Status da Doação</h3>
                 <div class="card" style="background-color: #f8f9fa; padding: 1rem;">
-                    <p><strong>Status:</strong> <span style="color: #28a745;">✅ Recebida</span></p>
+                    <p><strong>Status:</strong> <span style="color: #28a745;">Recebida</span></p>
                     <p><strong>Data de Registro:</strong> Hoje</p>
                     <p><strong>Categoria:</strong> 
                         <?php
                         if(stripos($this->doacao->tipo, 'Dinheiro') !== false) {
-                            echo '<span style="color: #007bff;">💰 Monetária</span>';
+                            echo '<span style="color: #007bff;">Monetária</span>';
                         } else {
                             echo '<span style="color: #28a745;">📦 Material</span>';
                         }
@@ -88,7 +70,7 @@
         <?php endif; ?>
         
         <div class="card" style="margin-top: 2rem; background-color: #f8f9fa;">
-            <h3>🎯 Ações Disponíveis</h3>
+            <h3>Ações Disponíveis</h3>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                 <a href="index.php?controller=doacao&action=edit&id=<?= $this->doacao->id ?>" 
                    class="btn btn-warning">✏️ Editar Doação</a>

@@ -20,11 +20,11 @@
                 <label for="especie" class="form-label">Espécie</label>
                 <select id="especie" name="especie" class="form-control">
                     <option value="">Selecione a espécie</option>
-                    <option value="Cão" <?= $this->pet->especie === 'Cão' ? 'selected' : '' ?>>🐕 Cão</option>
-                    <option value="Gato" <?= $this->pet->especie === 'Gato' ? 'selected' : '' ?>>🐱 Gato</option>
+                    <option value="Cão" <?= $this->pet->especie === 'Cão' ? 'selected' : '' ?>>Cão</option>
+                    <option value="Gato" <?= $this->pet->especie === 'Gato' ? 'selected' : '' ?>>Gato</option>
                     <option value="Coelho" <?= $this->pet->especie === 'Coelho' ? 'selected' : '' ?>>🐰 Coelho</option>
                     <option value="Pássaro" <?= $this->pet->especie === 'Pássaro' ? 'selected' : '' ?>>🐦 Pássaro</option>
-                    <option value="Outro" <?= $this->pet->especie === 'Outro' ? 'selected' : '' ?>>🐾 Outro</option>
+                    <option value="Outro" <?= $this->pet->especie === 'Outro' ? 'selected' : '' ?>>Outro</option>
                 </select>
             </div>
             
@@ -61,7 +61,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-success">💾 Salvar Alterações</button>
                 <a href="index.php?controller=pet&action=show&id=<?= $this->pet->id ?>" class="btn btn-primary">👁️ Visualizar</a>
-                <a href="index.php?controller=pet&action=index" class="btn btn-secondary">❌ Cancelar</a>
+                <a href="index.php?controller=pet&action=index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>

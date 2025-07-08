@@ -1,4 +1,3 @@
-// Função para mostrar mensagens de feedback
 function showMessage(message, type = 'info') {
     const alertDiv = document.createElement('div');
     alertDiv.className = `alert alert-${type}`;
@@ -7,20 +6,17 @@ function showMessage(message, type = 'info') {
     const container = document.querySelector('.container');
     container.insertBefore(alertDiv, container.firstChild);
     
-    // Remove a mensagem após 5 segundos
     setTimeout(() => {
         alertDiv.remove();
     }, 5000);
 }
 
-// Função para confirmar exclusão
 function confirmDelete(url, item) {
     if (confirm(`Tem certeza que deseja excluir este ${item}?`)) {
         window.location.href = url;
     }
 }
 
-// Função para buscar CEP via API
 async function buscarCep() {
     const cepInput = document.getElementById('cep');
     const cep = cepInput.value.replace(/\D/g, '');
@@ -39,7 +35,6 @@ async function buscarCep() {
             return;
         }
         
-        // Preenche os campos de endereço
         document.getElementById('logradouro').value = data.logradouro || '';
         document.getElementById('bairro').value = data.bairro || '';
         document.getElementById('cidade').value = data.localidade || '';
@@ -51,39 +46,71 @@ async function buscarCep() {
     }
 }
 
-// Função para buscar informações do clima
-async function buscarClima() {
+async function buscarFotoCachorro() {
     try {
-        const response = await fetch('api/clima.php');
+        const response = await fetch('api/dog.php');
         const data = await response.json();
         
-        if (data.error) {
-            console.log('Erro ao buscar clima:', data.error);
-            return;
-        }
-        
-        const weatherWidget = document.getElementById('weather-widget');
-        if (weatherWidget) {
-            weatherWidget.innerHTML = `
-                <h4>Clima em ${data.cidade}</h4>
-                <div class="weather-info">
-                    <div>
-                        <strong>${data.temperatura}°C</strong>
-                        <br>
-                        <small>${data.descricao}</small>
+        if (data.success) {
+            const dogWidget = document.getElementById('dog-widget');
+            if (dogWidget) {
+                dogWidget.innerHTML = `
+                    <h4>Cachorro do Dia</h4>
+                    <div style="text-align: center;">
+                        <img src="${data.image_url}" 
+                             alt="Cachorro aleatório" 
+                             style="max-width: 100%; max-height: 150px; border-radius: 8px; margin: 10px 0; object-fit: cover;">
+                        <p style="margin: 0; font-size: 0.8em; opacity: 0.9;">
+                            ${data.message}
+                        </p>
                     </div>
-                    <div>
-                        <strong>Umidade:</strong> ${data.umidade}%
-                    </div>
-                </div>
-            `;
+                `;
+            }
+        } else {
+            console.log('Erro ao buscar foto de cachorro:', data.error);
         }
     } catch (error) {
-        console.log('Erro ao buscar clima:', error);
+        console.log('Erro ao buscar foto de cachorro:', error);
     }
 }
 
-// Função para validar formulários
+async function buscarFotoGato() {
+    try {
+        const response = await fetch('api/cat.php');
+        const data = await response.json();
+        
+        if (data.success) {
+            const catWidget = document.getElementById('cat-widget');
+            if (catWidget) {
+                catWidget.innerHTML = `
+                    <h4>Gato do Dia</h4>
+                    <div style="text-align: center;">
+                        <img src="${data.image_url}" 
+                             alt="Gato aleatório" 
+                             style="max-width: 100%; max-height: 150px; border-radius: 8px; margin: 10px 0; object-fit: cover;">
+                        <p style="margin: 0; font-size: 0.8em; opacity: 0.9;">
+                            ${data.message}
+                        </p>
+                    </div>
+                `;
+            }
+        } else {
+            console.log('Erro ao buscar foto de gato:', data.error);
+        }
+    } catch (error) {
+        console.log('Erro ao buscar foto de gato:', error);
+    }
+}
+
+function toggleSidebar() {
+    const sidebar = document.getElementById('pets-sidebar');
+    sidebar.classList.toggle('open');
+}
+
+async function buscarClima() {
+    return;
+}
+
 function validarFormulario(form) {
     const requiredFields = form.querySelectorAll('[required]');
     let isValid = true;
@@ -104,7 +131,6 @@ function validarFormulario(form) {
     return isValid;
 }
 
-// Função para formatar telefone
 function formatarTelefone(input) {
     let value = input.value.replace(/\D/g, '');
     
@@ -118,28 +144,27 @@ function formatarTelefone(input) {
     input.value = value;
 }
 
-// Função para formatar CEP
 function formatarCep(input) {
     let value = input.value.replace(/\D/g, '');
     value = value.replace(/(\d{5})(\d{3})/, '$1-$2');
     input.value = value;
 }
 
-// Event listeners quando a página carrega
 document.addEventListener('DOMContentLoaded', function() {
-    // Mostrar mensagem se houver na URL
     const urlParams = new URLSearchParams(window.location.search);
     const message = urlParams.get('msg');
     if (message) {
         showMessage(decodeURIComponent(message), 'success');
     }
     
-    // Buscar clima na página inicial
-    if (document.getElementById('weather-widget')) {
-        buscarClima();
+    if (document.getElementById('dog-widget')) {
+        buscarFotoCachorro();
     }
     
-    // Adicionar event listeners para formulários
+    if (document.getElementById('cat-widget')) {
+        buscarFotoGato();
+    }
+    
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
@@ -149,30 +174,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Adicionar event listeners para campos de telefone
     const telefoneInputs = document.querySelectorAll('input[name="telefone"]');
     telefoneInputs.forEach(input => {
         input.addEventListener('input', function() {
             formatarTelefone(this);
         });
     });
-    
-    // Adicionar event listeners para campos de CEP
-    const cepInputs = document.querySelectorAll('input[name="cep"]');
-    cepInputs.forEach(input => {
-        input.addEventListener('input', function() {
-            formatarCep(this);
-        });
-        
-        input.addEventListener('blur', function() {
-            if (this.value.length === 9) {
-                buscarCep();
-            }
-        });
-    });
 });
 
-// Função para animar contadores na página inicial
 function animateCounters() {
     const counters = document.querySelectorAll('.counter');
     
@@ -195,7 +204,6 @@ function animateCounters() {
     });
 }
 
-// Função para filtrar tabelas
 function filtrarTabela(inputId, tableId) {
     const input = document.getElementById(inputId);
     const table = document.getElementById(tableId);

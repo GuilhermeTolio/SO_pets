@@ -15,15 +15,13 @@ class Pet {
         $this->conn = $db;
     }
 
-    // Criar pet
     public function create() {
         $query = "INSERT INTO " . $this->table_name . " 
-                  SET nome=:nome, especie=:especie, raca=:raca, 
-                      idade=:idade, sexo=:sexo, cor=:cor";
+                  (nome, especie, raca, idade, sexo, cor) 
+                  VALUES (:nome, :especie, :raca, :idade, :sexo, :cor)";
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar dados
         $this->nome = htmlspecialchars(strip_tags($this->nome));
         $this->especie = htmlspecialchars(strip_tags($this->especie));
         $this->raca = htmlspecialchars(strip_tags($this->raca));
@@ -31,7 +29,6 @@ class Pet {
         $this->sexo = htmlspecialchars(strip_tags($this->sexo));
         $this->cor = htmlspecialchars(strip_tags($this->cor));
 
-        // Bind dos parâmetros
         $stmt->bindParam(":nome", $this->nome);
         $stmt->bindParam(":especie", $this->especie);
         $stmt->bindParam(":raca", $this->raca);
@@ -46,23 +43,26 @@ class Pet {
         return false;
     }
 
-    // Ler todos os pets
     public function read() {
-        $query = "SELECT id, nome, especie, raca, idade, sexo, cor 
-                  FROM " . $this->table_name . " 
-                  ORDER BY nome ASC";
+        try {
+            $query = "SELECT id, nome, especie, raca, idade, sexo, cor 
+                      FROM " . $this->table_name . " 
+                      ORDER BY nome ASC";
 
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
 
-        return $stmt;
+            return $stmt;
+        } catch (PDOException $e) {
+            error_log("Erro na consulta Pet::read(): " . $e->getMessage());
+            throw $e;
+        }
     }
 
-    // Ler um pet específico
     public function readOne() {
         $query = "SELECT id, nome, especie, raca, idade, sexo, cor 
                   FROM " . $this->table_name . " 
-                  WHERE id = ? LIMIT 0,1";
+                  WHERE id = ? LIMIT 1";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
@@ -83,7 +83,6 @@ class Pet {
         return false;
     }
 
-    // Atualizar pet
     public function update() {
         $query = "UPDATE " . $this->table_name . " 
                   SET nome = :nome, especie = :especie, raca = :raca, 
@@ -115,7 +114,6 @@ class Pet {
         return false;
     }
 
-    // Deletar pet
     public function delete() {
         $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
 

@@ -18,7 +18,7 @@ CREATE TABLE usuario (
 CREATE TABLE doacao(
     id SERIAL PRIMARY KEY,
     tipo VARCHAR(100) NOT NULL,
-    valor DOUBLE(10,2),
+    valor DECIMAL(10,2),
     descricao TEXT
 );
 
@@ -28,8 +28,27 @@ SELECT * FROM usuario
 
 SELECT * FROM doacao
 
-INSERT INTO pets (nome, especie, raca, idade, sexo, cor) VALUES 
-('Rex', 'Cachorro', 'Labrador', 3, 'M', 'Amarelo'),
-('Mimi', 'Gato', 'Persa', 2, 'F', 'Branco'),
-('Thor', 'Cachorro', 'Pastor Alemão', 5, 'M', 'Preto e marrom'),
-('Luna', 'Gato', 'Siamês', 1, 'F', 'Cinza');
+
+-- Inserts para a tabela pets
+INSERT INTO pets (nome, especie, raca, idade, sexo, cor) VALUES
+('Toby', 'Cachorro', 'Labrador', 3, 'M', 'Preto'),
+('Luna', 'Gato', 'Persa', 2, 'F', 'Branco'),
+('Rex', 'Cachorro', 'Pastor Alemão', 5, 'M', 'Marrom'),
+('Mia', 'Gato', 'Siamês', 1, 'F', 'Cinza'),
+('Thor', 'Cachorro', 'Poodle', 4, 'M', 'Branco');
+
+-- Inserts para a tabela usuario
+INSERT INTO usuario (nome, email, telefone) VALUES
+('Ana Silva', 'ana.silva@example.com', '11987654321'),
+('Carlos Souza', 'carlos.souza@example.com', '21999887766'),
+('Mariana Lima', 'mariana.lima@example.com', '31988776655'),
+('Pedro Rocha', 'pedro.rocha@example.com', '41977665544'),
+('Julia Mendes', 'julia.mendes@example.com', '51966554433');
+
+-- Inserts para a tabela doacao
+INSERT INTO doacao (tipo, valor, descricao) VALUES
+('Dinheiro', 150.00, 'Doação mensal para ração'),
+('Ração', NULL, '10 kg de ração para cães'),
+('Medicamento', NULL, 'Antibiótico para tratamento de infecção'),
+('Dinheiro', 75.50, 'Ajuda para castração de gatos'),
+('Brinquedos', NULL, 'Brinquedos para cães e gatos do abrigo');

@@ -13,9 +13,15 @@ class PetController {
     }
 
     public function index() {
-        $stmt = $this->pet->read();
-        $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        include 'views/pets/index.php';
+        try {
+            $stmt = $this->pet->read();
+            $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            include 'views/pets/index.php';
+        } catch (Exception $e) {
+            echo "Erro ao carregar pets: " . $e->getMessage();
+            error_log("Erro no PetController::index(): " . $e->getMessage());
+            die();
+        }
     }
 
     public function create() {

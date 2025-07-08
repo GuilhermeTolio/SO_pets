@@ -33,7 +33,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-success">💾 Salvar Alterações</button>
                 <a href="index.php?controller=usuario&action=show&id=<?= $this->usuario->id ?>" class="btn btn-primary">👁️ Visualizar</a>
-                <a href="index.php?controller=usuario&action=index" class="btn btn-secondary">❌ Cancelar</a>
+                <a href="index.php?controller=usuario&action=index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>

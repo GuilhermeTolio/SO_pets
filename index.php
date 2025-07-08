@@ -1,7 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 
-// Roteamento simples
 $controller = $_GET['controller'] ?? 'home';
 $action = $_GET['action'] ?? 'index';
 $id = $_GET['id'] ?? null;

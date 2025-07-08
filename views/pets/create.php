@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1 class="card-title">🐕 Cadastrar Novo Pet</h1>
+            <h1 class="card-title">Cadastrar Novo Pet</h1>
             <a href="index.php?controller=pet&action=index" class="btn btn-secondary">⬅️ Voltar à Lista</a>
         </div>
         
@@ -19,11 +19,11 @@
                 <label for="especie" class="form-label">Espécie</label>
                 <select id="especie" name="especie" class="form-control">
                     <option value="">Selecione a espécie</option>
-                    <option value="Cão">🐕 Cão</option>
-                    <option value="Gato">🐱 Gato</option>
+                    <option value="Cão">Cão</option>
+                    <option value="Gato">Gato</option>
                     <option value="Coelho">🐰 Coelho</option>
                     <option value="Pássaro">🐦 Pássaro</option>
-                    <option value="Outro">🐾 Outro</option>
+                    <option value="Outro">Outro</option>
                 </select>
             </div>
             
@@ -56,7 +56,7 @@
             
             <div class="form-group">
                 <button type="submit" class="btn btn-success">💾 Cadastrar Pet</button>
-                <a href="index.php?controller=pet&action=index" class="btn btn-secondary">❌ Cancelar</a>
+                <a href="index.php?controller=pet&action=index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>

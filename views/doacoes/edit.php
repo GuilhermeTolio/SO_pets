@@ -13,7 +13,7 @@
                 <label for="tipo" class="form-label">Tipo de Doação <span class="required">*</span></label>
                 <select id="tipo" name="tipo" class="form-control" required>
                     <option value="">Selecione o tipo de doação</option>
-                    <option value="Dinheiro" <?= $this->doacao->tipo === 'Dinheiro' ? 'selected' : '' ?>>💰 Dinheiro</option>
+                    <option value="Dinheiro" <?= $this->doacao->tipo === 'Dinheiro' ? 'selected' : '' ?>>Dinheiro</option>
                     <option value="Ração" <?= $this->doacao->tipo === 'Ração' ? 'selected' : '' ?>>🥘 Ração</option>
                     <option value="Medicamento" <?= $this->doacao->tipo === 'Medicamento' ? 'selected' : '' ?>>💊 Medicamento</option>
                     <option value="Brinquedo" <?= $this->doacao->tipo === 'Brinquedo' ? 'selected' : '' ?>>🧸 Brinquedo</option>
@@ -42,7 +42,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-success">💾 Salvar Alterações</button>
                 <a href="index.php?controller=doacao&action=show&id=<?= $this->doacao->id ?>" class="btn btn-primary">👁️ Visualizar</a>
-                <a href="index.php?controller=doacao&action=index" class="btn btn-secondary">❌ Cancelar</a>
+                <a href="index.php?controller=doacao&action=index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>

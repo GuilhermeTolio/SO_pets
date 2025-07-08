@@ -1,24 +1,37 @@
 <?php
-class Database {
+class Database
+{
     private $host = 'localhost';
-    private $db_name = 'ong_pets';
-    private $username = 'root';
-    private $password = '';
+    private $db_name = 'santos';
+    private $username = 'santos';
+    private $password = 'yGqV54kwCAuQyzqX';
+    private $port = '5432';
     private $pdo;
 
-    public function getConnection() {
+
+    //    private $host = 'localhost';
+//     private $db_name = 'OS_pets';
+//     private $username = 'postgres';
+//     private $password = 'postgres';
+//     private $port = '5432';
+//     private $pdo;
+
+    public function getConnection()
+    {
         $this->pdo = null;
 
         try {
             $this->pdo = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                "pgsql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db_name,
                 $this->username,
                 $this->password
             );
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->pdo->exec("set names utf8");
-        } catch(PDOException $exception) {
-            echo "Erro de conexão: " . $exception->getMessage();
+            $this->pdo->exec("SET NAMES 'UTF8'");
+        } catch (PDOException $exception) {
+            echo "Erro de conexão com o banco de dados: " . $exception->getMessage();
+            error_log("Erro de conexão PDO: " . $exception->getMessage());
+            die();
         }
 
         return $this->pdo;
