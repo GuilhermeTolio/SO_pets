@@ -41,7 +41,6 @@
             
             <div class="form-group">
                 <button type="submit" class="btn btn-success">💾 Salvar Alterações</button>
-                <a href="index.php?controller=doacao&action=show&id=<?= $this->doacao->id ?>" class="btn btn-primary">👁️ Visualizar</a>
                 <a href="index.php?controller=doacao&action=index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>

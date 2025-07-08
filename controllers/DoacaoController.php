@@ -29,7 +29,7 @@ class DoacaoController {
             $this->doacao->descricao = $_POST['descricao'];
 
             if($this->doacao->create()) {
-                header("Location: index.php?controller=doacao&action=index&msg=Doação cadastrada com sucesso!");
+                header("Location: index.php?controller=doacao&action=success&operation=created");
             } else {
                 header("Location: index.php?controller=doacao&action=create&msg=Erro ao cadastrar doação!");
             }
@@ -41,7 +41,7 @@ class DoacaoController {
         if($this->doacao->readOne()) {
             include 'views/doacoes/show.php';
         } else {
-            header("Location: index.php?controller=doacao&action=index&msg=Doação não encontrada!");
+            include 'views/doacoes/not_found.php';
         }
     }
 
@@ -50,7 +50,7 @@ class DoacaoController {
         if($this->doacao->readOne()) {
             include 'views/doacoes/edit.php';
         } else {
-            header("Location: index.php?controller=doacao&action=index&msg=Doação não encontrada!");
+            include 'views/doacoes/not_found.php';
         }
     }
 
@@ -62,7 +62,7 @@ class DoacaoController {
             $this->doacao->descricao = $_POST['descricao'];
 
             if($this->doacao->update()) {
-                header("Location: index.php?controller=doacao&action=index&msg=Doação atualizada com sucesso!");
+                header("Location: index.php?controller=doacao&action=success&operation=updated");
             } else {
                 header("Location: index.php?controller=doacao&action=index&msg=Erro ao atualizar doação!");
             }
@@ -72,10 +72,14 @@ class DoacaoController {
     public function delete($id) {
         $this->doacao->id = $id;
         if($this->doacao->delete()) {
-            header("Location: index.php?controller=doacao&action=index&msg=Doação excluída com sucesso!");
+            header("Location: index.php?controller=doacao&action=success&operation=deleted");
         } else {
             header("Location: index.php?controller=doacao&action=index&msg=Erro ao excluir doação!");
         }
+    }
+
+    public function success() {
+        include 'views/doacoes/success.php';
     }
 }
 ?>

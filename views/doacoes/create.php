@@ -13,7 +13,7 @@
                 <label for="tipo" class="form-label">Tipo de Doação <span class="required">*</span></label>
                 <select id="tipo" name="tipo" class="form-control" required>
                     <option value="">Selecione o tipo de doação</option>
-                    <option value="Dinheiro">Dinheiro</option>
+                    <option value="Dinheiro">💸Dinheiro</option>
                     <option value="Ração">🥘 Ração</option>
                     <option value="Medicamento">💊 Medicamento</option>
                     <option value="Brinquedo">🧸 Brinquedo</option>
@@ -37,17 +37,7 @@
                 <textarea id="descricao" name="descricao" class="form-control" rows="4" 
                           placeholder="Descreva os detalhes da doação (quantidade, estado, observações, etc.)"></textarea>
             </div>
-            
-            <div class="card" style="background-color: #f8f9fa; margin: 1rem 0;">
-                <h4>Dicas para o Preenchimento</h4>
-                <ul style="margin-left: 1.5rem;">
-                    <li><strong>Dinheiro:</strong> Informe o valor exato</li>
-                    <li><strong>Ração:</strong> Especifique marca, sabor e quantidade (kg)</li>
-                    <li><strong>Medicamentos:</strong> Informe nome, dosagem e validade</li>
-                    <li><strong>Outros itens:</strong> Descreva estado de conservação e quantidade</li>
-                </ul>
-            </div>
-            
+        
             <div class="form-group">
                 <button type="submit" class="btn btn-success">💾 Registrar Doação</button>
                 <a href="index.php?controller=doacao&action=index" class="btn btn-secondary">Cancelar</a>

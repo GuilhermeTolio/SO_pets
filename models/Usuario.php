@@ -21,7 +21,7 @@ class Usuario {
 
         $this->nome = htmlspecialchars(strip_tags($this->nome));
         $this->email = htmlspecialchars(strip_tags($this->email));
-        $this->telefone = htmlspecialchars(strip_tags($this->telefone));
+        $this->telefone = preg_replace('/\D/', '', $this->telefone);
 
         $stmt->bindParam(":nome", $this->nome);
         $stmt->bindParam(":email", $this->email);
@@ -75,7 +75,7 @@ class Usuario {
 
         $this->nome = htmlspecialchars(strip_tags($this->nome));
         $this->email = htmlspecialchars(strip_tags($this->email));
-        $this->telefone = htmlspecialchars(strip_tags($this->telefone));
+        $this->telefone = preg_replace('/\D/', '', $this->telefone);
         $this->id = htmlspecialchars(strip_tags($this->id));
 
         $stmt->bindParam(':nome', $this->nome);

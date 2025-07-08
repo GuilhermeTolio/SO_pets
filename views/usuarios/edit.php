@@ -27,12 +27,12 @@
                 <label for="telefone" class="form-label">Telefone</label>
                 <input type="tel" id="telefone" name="telefone" class="form-control" 
                        value="<?= htmlspecialchars($this->usuario->telefone) ?>"
-                       placeholder="(00) 00000-0000">
+                       placeholder="11999887766" maxlength="11">
+                <small class="form-text text-muted">Digite apenas números (máximo 11 dígitos)</small>
             </div>
             
             <div class="form-group">
                 <button type="submit" class="btn btn-success">💾 Salvar Alterações</button>
-                <a href="index.php?controller=usuario&action=show&id=<?= $this->usuario->id ?>" class="btn btn-primary">👁️ Visualizar</a>
                 <a href="index.php?controller=usuario&action=index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>

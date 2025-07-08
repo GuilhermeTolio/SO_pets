@@ -11,7 +11,6 @@ body {
     line-height: 1.6;
 }
 
-/* Header */
 .header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -51,14 +50,12 @@ body {
     background-color: rgba(255,255,255,0.2);
 }
 
-/* Container principal */
 .container {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 2rem;
 }
 
-/* Cards */
 .card {
     background: white;
     border-radius: 10px;
@@ -79,7 +76,6 @@ body {
     margin-bottom: 0.5rem;
 }
 
-/* Botões */
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -137,7 +133,15 @@ body {
     background-color: #545b62;
 }
 
-/* Formulários */
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -168,7 +172,6 @@ body {
     color: #dc3545;
 }
 
-/* Tabelas */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -192,7 +195,6 @@ body {
     background-color: #f8f9fa;
 }
 
-/* Alertas */
 .alert {
     padding: 1rem;
     margin-bottom: 1rem;
@@ -218,7 +220,6 @@ body {
     border-color: #bee5eb;
 }
 
-/* Grid de cards para home */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -249,10 +250,9 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Sidebar lateral para fotos de pets */
 .sidebar {
     position: fixed;
-    top: 80px; /* Abaixo do header */
+    top: 80px;
     right: 0;
     width: 280px;
     height: calc(100vh - 80px);
@@ -317,13 +317,11 @@ body {
     border-color: rgba(255,255,255,0.5);
 }
 
-/* Ajustar container principal para dar espaço à sidebar */
 .main-content {
-    margin-right: 300px; /* Espaço para a sidebar */
+    margin-right: 300px;
     transition: margin-right 0.3s;
 }
 
-/* Botão para toggle da sidebar */
 .sidebar-toggle {
     position: fixed;
     top: 90px;
@@ -335,10 +333,9 @@ body {
     padding: 0.5rem;
     border-radius: 50%;
     cursor: pointer;
-    display: none; /* Mostrar apenas em telas pequenas */
+    display: none;
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -364,7 +361,6 @@ body {
         margin: 0.25rem 0;
     }
     
-    /* Sidebar responsiva */
     .sidebar {
         transform: translateX(100%);
         transition: transform 0.3s;
@@ -393,7 +389,6 @@ body {
     }
 }
 
-/* Animações */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -409,7 +404,6 @@ body {
     animation: fadeIn 0.5s ease-out;
 }
 
-/* Weather widget */
 .weather-widget {
     background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
     color: white;

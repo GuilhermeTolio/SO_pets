@@ -1,5 +1,6 @@
 <?php $title = 'Lista de Doações - Sistema ONG Pets'; ?>
 <?php include 'views/partials/header.php'; ?>
+<?php require_once 'helpers/StatusImageHelper.php'; ?>
 
 <div class="container">
     <div class="card">
@@ -53,17 +54,18 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            
-            <div class="card" style="margin-top: 2rem; background-color: #f8f9fa;">
-                <h3>Resumo das Doações</h3>
-                <div class="grid">
-                    <div>
-                        <strong>Total de Doações:</strong> <?= count($doacoes) ?>
-                    </div>
-                    <div>
-                        <strong>Valor Total:</strong> 
-                        R$ <?= number_format(array_sum(array_column($doacoes, 'valor')), 2, ',', '.') ?>
-                    </div>
+        <?php else: ?>
+            <div style="max-width: 600px; margin: 2rem auto;">
+                <?php 
+                echo StatusImageHelper::getStatusCard(
+                    204, 
+                    '📦 Nenhuma Doação Cadastrada', 
+                    'Não há doações registradas no sistema ainda. Que tal cadastrar a primeira?',
+                    'dog'
+                );
+                ?>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="index.php?controller=doacao&action=create" class="btn btn-success">➕ Cadastrar Primeira Doação</a>
                 </div>
             </div>
         <?php endif; ?>

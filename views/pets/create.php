@@ -2,6 +2,14 @@
 <?php include 'views/partials/header.php'; ?>
 
 <div class="container">
+    <?php if (isset($statusImage)): ?>
+        <?php echo $statusImage; ?>
+        
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="index.php?controller=pet&action=create" class="btn btn-primary">🔄 Tentar Novamente</a>
+            <a href="index.php?controller=pet&action=index" class="btn btn-secondary">⬅️ Voltar à Lista</a>
+        </div>
+    <?php else: ?>
     <div class="card">
         <div class="card-header">
             <h1 class="card-title">Cadastrar Novo Pet</h1>
@@ -19,11 +27,11 @@
                 <label for="especie" class="form-label">Espécie</label>
                 <select id="especie" name="especie" class="form-control">
                     <option value="">Selecione a espécie</option>
-                    <option value="Cão">Cão</option>
-                    <option value="Gato">Gato</option>
+                    <option value="Cão">🐶Cão</option>
+                    <option value="Gato">😺Gato</option>
                     <option value="Coelho">🐰 Coelho</option>
                     <option value="Pássaro">🐦 Pássaro</option>
-                    <option value="Outro">Outro</option>
+                    <option value="Outro">🦄Outro</option>
                 </select>
             </div>
             
@@ -60,6 +68,7 @@
             </div>
         </form>
     </div>
+    <?php endif; ?>
 </div>
 
 <?php include 'views/partials/footer.php'; ?>

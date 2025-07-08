@@ -26,10 +26,9 @@
                 <p>Registre e acompanhe as doações recebidas pela organização</p>
                 <a href="index.php?controller=doacao&action=index" class="btn btn-warning">Acessar Doações</a>
             </div>
+            
         </div>
     </div>
 </div>
-
-<?php include 'views/partials/footer.php'; ?>
 
 <?php include 'views/partials/footer.php'; ?>

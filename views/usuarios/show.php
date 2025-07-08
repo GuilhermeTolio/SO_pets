@@ -60,21 +60,6 @@
             </div>
         </div>
         
-        <div class="card" style="margin-top: 2rem; background-color: #f8f9fa;">
-            <h3>Ações Disponíveis</h3>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="index.php?controller=usuario&action=edit&id=<?= $this->usuario->id ?>" 
-                   class="btn btn-warning">✏️ Editar Informações</a>
-                <a href="javascript:void(0)" 
-                   onclick="confirmDelete('index.php?controller=usuario&action=delete&id=<?= $this->usuario->id ?>', 'usuário')" 
-                   class="btn btn-danger">🗑️ Excluir Usuário</a>
-                <a href="index.php?controller=usuario&action=index" 
-                   class="btn btn-primary">📋 Ver Todos os Usuários</a>
-                <a href="index.php?controller=usuario&action=create" 
-                   class="btn btn-success">➕ Cadastrar Novo Usuário</a>
-            </div>
-        </div>
-        
         <?php if($this->usuario->email): ?>
         <div class="card" style="margin-top: 2rem; background-color: #e3f2fd;">
             <h3>Ações de Comunicação</h3>

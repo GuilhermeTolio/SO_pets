@@ -1,7 +1,29 @@
-<?php $title = 'Lista de Pets - Sistema ONG Pets'; ?>
+<?php 
+require_once 'helpers/StatusImageHelper.php';
+$title = 'Lista de Pets - Sistema ONG Pets'; 
+?>
 <?php include 'views/partials/header.php'; ?>
 
 <div class="container">
+    <?php if (isset($_GET['msg']) && isset($_GET['status'])): ?>
+        <div style="max-width: 600px; margin: 0 auto 30px;">
+            <?php 
+            $statusCode = $_GET['status'];
+            $msg = $_GET['msg'];
+            
+            if ($msg === 'success' && $statusCode == '201') {
+                echo StatusImageHelper::getStatusCard(201, "Pet Cadastrado com Sucesso!", "O novo pet foi adicionado ao sistema!", 'dog');
+            } elseif ($msg === 'updated' && $statusCode == '200') {
+                echo StatusImageHelper::getStatusCard(200, "✅ Pet Atualizado com Sucesso!", "As informações do pet foram atualizadas no sistema.", 'dog');
+            } elseif ($msg === 'deleted' && $statusCode == '200') {
+                echo StatusImageHelper::getStatusCard(200, "🗑️ Pet Removido com Sucesso!", "O pet foi removido do sistema.", 'dog');
+            } elseif ($msg === 'error' && $statusCode == '500') {
+                echo StatusImageHelper::getStatusCard(500, "💥 Erro na Operação", "Ocorreu um erro ao processar a solicitação. Tente novamente.", 'cat');
+            }
+            ?>
+        </div>
+    <?php endif; ?>
+    
     <div class="card">
         <div class="card-header">
             <h1 class="card-title">Gerenciar Pets</h1>

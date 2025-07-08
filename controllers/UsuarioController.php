@@ -29,7 +29,7 @@ class UsuarioController {
             $this->usuario->telefone = $_POST['telefone'];
 
             if($this->usuario->create()) {
-                header("Location: index.php?controller=usuario&action=index&msg=Usuário cadastrado com sucesso!");
+                header("Location: index.php?controller=usuario&action=success&operation=created");
             } else {
                 header("Location: index.php?controller=usuario&action=create&msg=Erro ao cadastrar usuário!");
             }
@@ -41,7 +41,7 @@ class UsuarioController {
         if($this->usuario->readOne()) {
             include 'views/usuarios/show.php';
         } else {
-            header("Location: index.php?controller=usuario&action=index&msg=Usuário não encontrado!");
+            include 'views/usuarios/not_found.php';
         }
     }
 
@@ -50,7 +50,7 @@ class UsuarioController {
         if($this->usuario->readOne()) {
             include 'views/usuarios/edit.php';
         } else {
-            header("Location: index.php?controller=usuario&action=index&msg=Usuário não encontrado!");
+            include 'views/usuarios/not_found.php';
         }
     }
 
@@ -62,7 +62,7 @@ class UsuarioController {
             $this->usuario->telefone = $_POST['telefone'];
 
             if($this->usuario->update()) {
-                header("Location: index.php?controller=usuario&action=index&msg=Usuário atualizado com sucesso!");
+                header("Location: index.php?controller=usuario&action=success&operation=updated");
             } else {
                 header("Location: index.php?controller=usuario&action=index&msg=Erro ao atualizar usuário!");
             }
@@ -72,10 +72,14 @@ class UsuarioController {
     public function delete($id) {
         $this->usuario->id = $id;
         if($this->usuario->delete()) {
-            header("Location: index.php?controller=usuario&action=index&msg=Usuário excluído com sucesso!");
+            header("Location: index.php?controller=usuario&action=success&operation=deleted");
         } else {
             header("Location: index.php?controller=usuario&action=index&msg=Erro ao excluir usuário!");
         }
+    }
+
+    public function success() {
+        include 'views/usuarios/success.php';
     }
 }
 ?>

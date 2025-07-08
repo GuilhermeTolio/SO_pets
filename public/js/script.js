@@ -17,35 +17,6 @@ function confirmDelete(url, item) {
     }
 }
 
-async function buscarCep() {
-    const cepInput = document.getElementById('cep');
-    const cep = cepInput.value.replace(/\D/g, '');
-    
-    if (cep.length !== 8) {
-        showMessage('CEP deve conter 8 dígitos', 'danger');
-        return;
-    }
-    
-    try {
-        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-        const data = await response.json();
-        
-        if (data.erro) {
-            showMessage('CEP não encontrado', 'danger');
-            return;
-        }
-        
-        document.getElementById('logradouro').value = data.logradouro || '';
-        document.getElementById('bairro').value = data.bairro || '';
-        document.getElementById('cidade').value = data.localidade || '';
-        document.getElementById('uf').value = data.uf || '';
-        
-        showMessage('CEP encontrado com sucesso!', 'success');
-    } catch (error) {
-        showMessage('Erro ao buscar CEP', 'danger');
-    }
-}
-
 async function buscarFotoCachorro() {
     try {
         const response = await fetch('api/dog.php');
@@ -141,12 +112,6 @@ function formatarTelefone(input) {
         }
     }
     
-    input.value = value;
-}
-
-function formatarCep(input) {
-    let value = input.value.replace(/\D/g, '');
-    value = value.replace(/(\d{5})(\d{3})/, '$1-$2');
     input.value = value;
 }
 

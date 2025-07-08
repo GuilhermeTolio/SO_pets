@@ -32,12 +32,7 @@
             <h4>Gato do Dia</h4>
             <p>Carregando foto...</p>
         </div>
-                
-        <div style="margin-top: 2rem; padding: 1rem; background: rgba(0,0,0,0.1); border-radius: 8px;">
-            <p style="margin: 0; font-size: 0.8rem; opacity: 0.8;">
-                Fotos fofas de pets para alegrar seu dia enquanto trabalha!
-            </p>
-        </div>
+
     </div>
 
     <div class="main-content">

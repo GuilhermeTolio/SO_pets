@@ -2,6 +2,14 @@
 <?php include 'views/partials/header.php'; ?>
 
 <div class="container">
+    <?php if (isset($statusImage)): ?>
+        <?php echo $statusImage; ?>
+        
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="index.php?controller=pet&action=edit&id=<?= $this->pet->id ?>" class="btn btn-primary">🔄 Tentar Novamente</a>
+            <a href="index.php?controller=pet&action=index" class="btn btn-secondary">⬅️ Voltar à Lista</a>
+        </div>
+    <?php else: ?>
     <div class="card">
         <div class="card-header">
             <h1 class="card-title">✏️ Editar Pet: <?= htmlspecialchars($this->pet->nome) ?></h1>
@@ -60,11 +68,11 @@
             
             <div class="form-group">
                 <button type="submit" class="btn btn-success">💾 Salvar Alterações</button>
-                <a href="index.php?controller=pet&action=show&id=<?= $this->pet->id ?>" class="btn btn-primary">👁️ Visualizar</a>
                 <a href="index.php?controller=pet&action=index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
+    <?php endif; ?>
 </div>
 
 <?php include 'views/partials/footer.php'; ?>

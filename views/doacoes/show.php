@@ -69,26 +69,7 @@
         </div>
         <?php endif; ?>
         
-        <div class="card" style="margin-top: 2rem; background-color: #f8f9fa;">
-            <h3>Ações Disponíveis</h3>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="index.php?controller=doacao&action=edit&id=<?= $this->doacao->id ?>" 
-                   class="btn btn-warning">✏️ Editar Doação</a>
-                <a href="javascript:void(0)" 
-                   onclick="confirmDelete('index.php?controller=doacao&action=delete&id=<?= $this->doacao->id ?>', 'doação')" 
-                   class="btn btn-danger">🗑️ Excluir Doação</a>
-                <a href="index.php?controller=doacao&action=index" 
-                   class="btn btn-primary">📋 Ver Todas as Doações</a>
-                <a href="index.php?controller=doacao&action=create" 
-                   class="btn btn-success">➕ Registrar Nova Doação</a>
-            </div>
-        </div>
         
-        <div class="card" style="margin-top: 2rem; background-color: #e3f2fd;">
-            <h3>🙏 Agradecimento</h3>
-            <p>Esta doação é muito importante para o cuidado dos nossos pets! Cada contribuição faz a diferença na vida dos animais que cuidamos.</p>
-            <p><strong>💝 Muito obrigado pela generosidade!</strong></p>
-        </div>
     </div>
 </div>
 
