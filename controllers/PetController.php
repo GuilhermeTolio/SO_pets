@@ -20,7 +20,6 @@ class PetController {
             $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
             include 'views/pets/index.php';
         } catch (Exception $e) {
-            // Verificar se é erro de tabela não encontrada
             if (strpos($e->getMessage(), 'relation "pets" does not exist') !== false) {
                 ErrorHelper::handleTableNotFound('pets');
             } else {
